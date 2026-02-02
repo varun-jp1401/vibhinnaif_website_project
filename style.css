@@ -924,6 +924,118 @@ body {
 .lightbox-next {
     right: 30px;
 }
+/* ================================
+   DONATE PAGE – MODERN NGO STYLE
+   ================================ */
+
+.donate-section {
+    padding: 100px 0;
+    background: linear-gradient(
+        180deg,
+        var(--mint-bg) 0%,
+        #ffffff 60%
+    );
+}
+
+.donate-wrapper {
+    max-width: 720px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+.donate-card {
+    background: white;
+    border-radius: 20px;
+    padding: 48px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.08);
+}
+
+.donate-card h2 {
+    font-size: 36px;
+    color: var(--deep-green);
+    margin-bottom: 10px;
+}
+
+.donate-subtext {
+    font-size: 16px;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+}
+
+.amount-options {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 28px;
+}
+
+.amount-btn {
+    padding: 14px 0;
+    border-radius: 12px;
+    border: 1.5px solid #dbe7e3;
+    background: #f9fbfa;
+    color: var(--deep-green);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-weight: bold;
+}
+
+.amount-btn:hover {
+    background:  var(--deep-green);
+    color: #f9fbfa;
+}
+
+.donate-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.donate-form input {
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+    font-size: 15px;
+}
+
+.donate-form input:focus {
+    outline: none;
+    border-color: var(--deep-green);
+}
+
+
+.donate-form input[type="number"],
+.donate-submit {
+    grid-column: span 2;
+}
+
+.donate-submit {
+    margin-top: 10px;
+    padding: 16px;
+    background: var(--deep-green);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    font-size: 17px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.donate-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+
+.donate-trust {
+    margin-top: 18px;
+    text-align: center;
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
 
 /* ================================
    CONTACT PAGE
@@ -1118,5 +1230,23 @@ body {
     
     .gallery-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .donate-card {
+        padding: 32px 24px;
+    }
+
+    .amount-options {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .donate-form {
+        grid-template-columns: 1fr;
+    }
+
+    .donate-submit {
+        grid-column: span 1;
     }
 }
