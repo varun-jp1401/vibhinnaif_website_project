@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vibhinna India Foundation - Home</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,7 +17,7 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <img src="images/logo.png" alt="Vibhinna India Foundation">
+                    <img src="Images/Logo/Logo.png" alt="Vibhinna India Foundation">
                 </div>
                 <nav class="nav">
                     <a href="index.html" class="nav-link active">Home</a>
@@ -23,7 +25,7 @@
                     <a href="campaigns.html" class="nav-link">Our Campaigns</a>
                     <a href="gallery.html" class="nav-link">Gallery</a>
                     <a href="contact.html" class="nav-link">Contact Us</a>
-                    <a href="#" class="btn-donate">Donate</a>
+                    <a href="donate.html" class="btn-donate">Donate</a>
                 </nav>
             </div>
         </div>
@@ -33,26 +35,39 @@
     <section class="hero-slideshow">
         <div class="slideshow-container">
             <div class="slide active">
-                <img src="images/slide1.jpg" alt="Slide 1">
-                <div class="slide-text">Image slideshow</div>
+                <img src="Images/Gallery/slide1.jpg" alt="Slide 1">
+                
             </div>
             <div class="slide">
-                <img src="images/slide2.jpg" alt="Slide 2">
-                <div class="slide-text">Image slideshow</div>
+                <img src="Images/Gallery/slide2.jpeg" alt="Slide 2">
+                
             </div>
             <div class="slide">
-                <img src="images/slide3.jpg" alt="Slide 3">
-                <div class="slide-text">Image slideshow</div>
+                <img src="Images/Gallery/slide3.jpeg" alt="Slide 3">
+                
             </div>
             <div class="slide">
-                <img src="images/slide4.jpg" alt="Slide 4">
-                <div class="slide-text">Image slideshow</div>
+                <img src="Images/Gallery/slide4.png" alt="Slide 4">
+                
             </div>
             <div class="slide">
-                <img src="images/slide5.jpg" alt="Slide 5">
-                <div class="slide-text">Image slideshow</div>
+                <img src="Images/Gallery/slide5.jpeg" alt="Slide 5">
+                
             </div>
         </div>
+        
+        <!-- Slideshow Arrows -->
+        <button class="slideshow-arrow slideshow-arrow-left">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+        <button class="slideshow-arrow slideshow-arrow-right">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+        
         <div class="slideshow-indicators">
             <span class="indicator active" data-slide="0"></span>
             <span class="indicator" data-slide="1"></span>
@@ -69,50 +84,58 @@
             <div class="impact-grid">
                 <div class="impact-circle">
                     <div class="circle-content">
-                        <div class="impact-number">10L+</div>
-                        <div class="impact-label">Native Saplings Planted</div>
+                        <div class="impact-number" data-target="1850">0</div>
+                        <div class="impact-plus">+</div>
+                        <div class="impact-label">Children Supported</div>
                     </div>
                 </div>
                 <div class="impact-circle">
                     <div class="circle-content">
-                        <div class="impact-number">500+</div>
-                        <div class="impact-label">Acres Restored</div>
+                        <div class="impact-number" data-target="100">0</div>
+                        <div class="impact-plus">+</div>
+                        <div class="impact-label">Women's livelihood</div>
                     </div>
                 </div>
                 <div class="impact-circle">
                     <div class="circle-content">
-                        <div class="impact-number">50+</div>
-                        <div class="impact-label">Communities Engaged</div>
+                        <div class="impact-number" data-target="29">0</div>
+                        <div class="impact-plus">+</div>
+                        <div class="impact-label">Insect Café set up</div>
                     </div>
                 </div>
                 <div class="impact-circle">
                     <div class="circle-content">
-                        <div class="impact-number">15+</div>
-                        <div class="impact-label">Active Campaigns</div>
+                        <div class="impact-number" data-target="135">0</div>
+                        <div class="impact-plus">+</div>
+                        <div class="impact-label">Native species conserved</div>
                     </div>
                 </div>
                 <div class="impact-circle">
                     <div class="circle-content">
-                        <div class="impact-number">1000+</div>
-                        <div class="impact-label">Volunteers</div>
+                        <div class="impact-number" data-target="500">0</div>
+                        <div class="impact-plus">+</div>
+                        <div class="impact-label">Women screened for Breast Cancer screening</div>
                     </div>
                 </div>
                 <div class="impact-circle">
                     <div class="circle-content">
-                        <div class="impact-number">100+</div>
-                        <div class="impact-label">Corporate Partners</div>
+                        <div class="impact-number" data-target="10500">0</div>
+                        <div class="impact-plus">+</div>
+                        <div class="impact-label">Native saplings planted</div>
                     </div>
                 </div>
                 <div class="impact-circle">
                     <div class="circle-content">
-                        <div class="impact-number">25+</div>
-                        <div class="impact-label">Schools Supported</div>
+                        <div class="impact-number" data-target="15">0</div>
+                        <div class="impact-plus">+</div>
+                        <div class="impact-label">Govt Schools renovated</div>
                     </div>
                 </div>
                 <div class="impact-circle">
                     <div class="circle-content">
-                        <div class="impact-number">50K+</div>
-                        <div class="impact-label">Lives Impacted</div>
+                        <div class="impact-number" data-target="18">0</div>
+                        <div class="impact-plus">Cr+</div>
+                        <div class="impact-label">Conservation of Water</div>
                     </div>
                 </div>
             </div>
@@ -124,17 +147,17 @@
         <div class="container">
             <div class="wwd-layout">
                 <div class="wwd-content">
-                    <h2>What We Do</h2>
-                    <p>Vibhinna India Foundation works at the intersection of ecology, education, and community welfare. Our initiatives range from large-scale tree plantation drives to supporting rural livelihoods and promoting sustainable practices across Karnataka.</p>
-                    <p>We believe in creating lasting impact through collaboration with local communities, government bodies, and corporate partners.</p>
+                    <h2>What do we do at Vibhinna?</h2>
+                    <p>We work towards a greener and more inclusive tomorrow by restoring nature, supporting education, creating sustainable livelihood opportunities, and nurturing communities' well-being.</p>
+                    <p>Our initiatives connect people with the environment and empower communities to grow stronger together.</p>
                     <a href="about.html" class="btn-read-more">Read More →</a>
                 </div>
                 <div class="wwd-images">
                     <div class="image-grid">
-                        <img src="images/img1.jpg" alt="Our Work 1">
-                        <img src="images/img2.jpg" alt="Our Work 2">
-                        <img src="images/img3.jpg" alt="Our Work 3">
-                        <img src="images/img4.jpg" alt="Our Work 4">
+                        <img src="Images/Gallery/what-do-we-do-1.jpg" alt="Our Work 1">
+                        <img src="Images/Gallery/what-do-we-do-2.jpeg" alt="Our Work 2">
+                        <img src="Images/Gallery/what-do-we-do-3.jpg" alt="Our Work 3">
+                        <img src="Images/Gallery/what-do-we-do-4.jpg" alt="Our Work 4">
                     </div>
                 </div>
             </div>
@@ -158,7 +181,7 @@
                             <p>– Shri. Manohar<br>Manager, St. John's Hospital Campus</p>
                         </div>
                         <div class="testimonial-quote-card">
-                            <p>"St. John's Hospital Campus has over 6000 people visiting daily. Although we had many trees, the butterfly garden is a unique concept and we are proud to have this inside our campus. The students are excited to see beautiful butterflies hovering all over."</p>
+                            <p>"St. John's Hospital Campus has over 6000 people visiting daily. Although we have so much green it still looked like a unique concept and we are proud to have this inside our campus. The students are excited to see beautiful butterflies hovering all over."</p>
                         </div>
                     </div>
                     
@@ -167,13 +190,13 @@
                             <p>– Ms. Priya Sharma<br>Principal, Green Valley School</p>
                         </div>
                         <div class="testimonial-quote-card">
-                            <p>"The environmental education program conducted by Vibhinna has transformed our students' perspective on sustainability. They now actively participate in eco-friendly initiatives and inspire their families to do the same."</p>
+                            <p>"The butterfly garden created by Vibhinna has transformed our school environment. It's become an outdoor classroom where students learn about ecology hands-on. The impact on their environmental awareness has been remarkable."</p>
                         </div>
                     </div>
                     
                     <div class="testimonial-item">
                         <div class="testimonial-name-card">
-                            <p>– Mr. Rajesh Kumar<br>Village Head, Mallige Village</p>
+                            <p>– Mr. Ravi Kumar<br>Farmer, Kolar District</p>
                         </div>
                         <div class="testimonial-quote-card">
                             <p>"Vibhinna's support in setting up our organic farming collective has doubled our income while preserving our soil quality. The training and market linkages they provided have been invaluable for our community."</p>
@@ -218,20 +241,21 @@
     <!-- Donors Section -->
     <section class="donors-section">
         <div class="container">
-            <h2 class="section-title">Our Partners & Donors</h2>
+            <h2 class="section-title">Our Donors</h2>
             <div class="donors-marquee-container">
                 <div class="donors-marquee">
                     <div class="donors-track">
-                        <img src="images/zepto.png" alt="Zepto">
-                        <img src="images/ey.png" alt="EY">
-                        <img src="images/aristo.png" alt="Aristo">
-                        <img src="images/continental.png" alt="Continental">
-                        <img src="images/propelld.png" alt="Propelld">
-                        <img src="images/zepto.png" alt="Zepto">
-                        <img src="images/ey.png" alt="EY">
-                        <img src="images/aristo.png" alt="Aristo">
-                        <img src="images/continental.png" alt="Continental">
-                        <img src="images/propelld.png" alt="Propelld">
+                        <img src="Images/Gallery/zepto.png" alt="Zepto">
+                        <img src="Images/Gallery/EY.png" alt="EY">
+                        <img src="Images/Gallery/Aristo.png" alt="Aristo">
+                        <img src="Images/Gallery/continental.png" alt="Continental">
+                        <img src="Images/Gallery/propelldf.png" alt="Propelld">
+                        <!-- Duplicate set for seamless loop -->
+                        <img src="Images/Gallery/zepto.png" alt="Zepto">
+                        <img src="Images/Gallery/EY.png" alt="EY">
+                        <img src="Images/Gallery/Aristo.png" alt="Aristo">
+                        <img src="Images/Gallery/continental.png" alt="Continental">
+                        <img src="Images/Gallery/propelldf.png" alt="Propelld">
                     </div>
                 </div>
             </div>
@@ -242,7 +266,7 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-col">
+                <div class="footer-col footer-social-col">
                     <h3>Follow us:</h3>
                     <div class="social-links">
                         <a href="#" class="social-link">
@@ -272,18 +296,18 @@
                     </div>
                 </div>
                 
-                <div class="footer-col">
+                <div class="footer-col footer-contact-col">
                     <h3>Contact us</h3>
                     <form class="contact-form-footer">
                         <input type="text" placeholder="Your name" required>
                         <input type="tel" placeholder="Phone Number" required>
                         <input type="email" placeholder="Mail id" required>
-                        <textarea placeholder="Your message" rows="4" required></textarea>
+                        <textarea placeholder="Your message" rows="3" required></textarea>
                         <button type="submit">Submit</button>
                     </form>
                 </div>
                 
-                <div class="footer-col">
+                <div class="footer-col footer-hours-col">
                     <h3>Opening Hours</h3>
                     <div class="opening-hours">
                         <p><strong>Mon - Fri</strong><br>9:00 am – 8:00 pm</p>
@@ -292,10 +316,10 @@
                     </div>
                 </div>
                 
-                <div class="footer-col">
+                <div class="footer-col footer-location-col">
                     <h3><svg width="16" height="20" viewBox="0 0 384 512" fill="currentColor" style="vertical-align: middle; margin-right: 8px;"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg> Locate us</h3>
                     <div class="map-container">
-                        <img src="images/map.png" alt="Location Map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.9957773093097!2d77.58993637507427!3d12.843548987460215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4c7468cf06182b6f%3A0x244f5d2cd19d8c28!2sVibhinna%20India%20Foundation!5e0!3m2!1sen!2sin!4v1770062920112!5m2!1sen!2sin" width="450" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                     <div class="office-address">
                         <h4>Office</h4>
@@ -310,6 +334,8 @@
         </div>
     </footer>
 
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
