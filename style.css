@@ -221,7 +221,7 @@ body {
 .impact-number {
     font-size: 36px;
     font-weight: 700;
-    color: white;
+    color: #DEB029;     ;
     margin-bottom: 10px;
 }
 
@@ -414,52 +414,38 @@ body {
 }
 
 /* ================================
-   DONORS SECTION
+   DONORS - fix spacing (no repeating) 
    ================================ */
-.donors-section {
-    background-color: var(--sun-yellow);
-    padding: 80px 0;
-}
-
-.donors-marquee-container {
-    overflow: hidden;
-    margin-top: 40px;
-}
-
-.donors-marquee {
-    width: 100%;
-}
-
+.donors-marquee-container { overflow: hidden; width: 100%; }
+.donors-marquee { width: 100%; overflow: hidden; }
 .donors-track {
     display: flex;
-    gap: 80px;
-    animation: scroll 20s linear infinite;
+    gap: 90px;             /* more breathing room between logos */
+    align-items: center;
+    width: max-content;    /* natural width, don't force duplication */
+    animation: marquee 28s linear infinite;
+    will-change: transform;
+    padding-left: 16px;    /* small left inset so first logo isn't flush to edge */
 }
-
-.donors-track:hover {
-    animation-play-state: paused;
-}
-
 .donors-track img {
     height: 80px;
     width: auto;
     object-fit: contain;
     filter: grayscale(100%);
-    transition: filter 0.3s ease;
+    transition: transform .35s ease, filter .35s ease;
+    display: inline-block;
+}
+.donors-track img:hover { transform: scale(1.12); filter: grayscale(0%); }
+
+/* marquee animation: from visible -> translate left to hide track end and jump back */
+@keyframes marquee {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(calc(-1 * (100% - 100vw))); }
 }
 
-.donors-track img:hover {
-    filter: grayscale(0%);
-}
+/* Pause on hover */
+.donors-marquee:hover .donors-track { animation-play-state: paused; }
 
-@keyframes scroll {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-50%);
-    }
-}
 
 /* ================================
    FOOTER
@@ -1249,4 +1235,1112 @@ body {
     .donate-submit {
         grid-column: span 1;
     }
+}/* Slideshow Arrows */
+.slideshow-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    color: var(--deep-green);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.slideshow-arrow:hover {
+    background-color: white;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.slideshow-arrow-left {
+    left: 30px;
+}
+
+.slideshow-arrow-right {
+    right: 30px;
+}
+
+/* Impact Section Enhancements */
+.impact-number {
+    font-size: 42px !important;
+    font-weight: 700 !important;
+    color: white !important;
+    margin-bottom: 0 !important;
+    line-height: 1 !important;
+}
+
+.impact-plus {
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 8px;
+}
+
+/* Footer Layout Matching Figma */
+.footer {
+    background-color: var(--deep-green);
+    color: white;
+    padding: 60px 0 30px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 0.8fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-col h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.footer-social-col .social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.social-link:hover {
+    color: var(--sun-yellow);
+}
+
+.footer-contact-col .contact-form-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact-form-footer input,
+.contact-form-footer textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.contact-form-footer input::placeholder,
+.contact-form-footer textarea::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.contact-form-footer button {
+    background-color: var(--sun-yellow);
+    color: var(--deep-green);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.contact-form-footer button:hover {
+    background-color: #f0c040;
+    transform: translateY(-2px);
+}
+
+.footer-hours-col .opening-hours p {
+    margin-bottom: 15px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.footer-location-col .map-container {
+    margin-bottom: 15px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.footer-location-col .map-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.footer-location-col .office-address h4 {
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: var(--sun-yellow);
+}
+
+.footer-location-col .office-address p {
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 25px;
+    text-align: center;
+}
+
+.footer-bottom p {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+}
+/* ================================
+   ENHANCED ANIMATIONS & TRANSITIONS
+   ================================ */
+
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Page load fade-in */
+body {
+    animation: pageLoad 0.8s ease-in-out;
+}
+
+@keyframes pageLoad {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Header scroll effect */
+.header {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header.scrolled {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    padding: 12px 0;
+}
+
+/* Navigation links - enhanced hover */
+.nav-link {
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--sun-yellow);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::before {
+    width: 100%;
+}
+
+/* Donate button - enhanced animation */
+.btn-donate {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn-donate::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+    z-index: -1;
+}
+
+.btn-donate:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Hero slideshow - enhanced transitions */
+.slide {
+    animation: slideIn 1s ease-in-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: scale(1.1);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.slide-text {
+    animation: textSlideUp 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.3s both;
+}
+
+@keyframes textSlideUp {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -40%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* Slideshow arrows - bounce effect */
+.slideshow-arrow {
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.slideshow-arrow-left:hover {
+    animation: bounceLeft 0.6s ease-in-out;
+}
+
+.slideshow-arrow-right:hover {
+    animation: bounceRight 0.6s ease-in-out;
+}
+
+@keyframes bounceLeft {
+    0%, 100% { transform: translateY(-50%) translateX(0); }
+    50% { transform: translateY(-50%) translateX(-10px); }
+}
+
+@keyframes bounceRight {
+    0%, 100% { transform: translateY(-50%) translateX(0); }
+    50% { transform: translateY(-50%) translateX(10px); }
+}
+
+/* Impact circles - staggered animation on scroll */
+.impact-circle {
+    opacity: 0;
+    transform: translateY(50px) scale(0.9);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.impact-circle.animate {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.impact-circle:nth-child(1) { transition-delay: 0.1s; }
+.impact-circle:nth-child(2) { transition-delay: 0.2s; }
+.impact-circle:nth-child(3) { transition-delay: 0.3s; }
+.impact-circle:nth-child(4) { transition-delay: 0.4s; }
+.impact-circle:nth-child(5) { transition-delay: 0.5s; }
+.impact-circle:nth-child(6) { transition-delay: 0.6s; }
+.impact-circle:nth-child(7) { transition-delay: 0.7s; }
+.impact-circle:nth-child(8) { transition-delay: 0.8s; }
+
+/* Circle hover - 3D effect */
+.circle-content {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 30px rgba(40, 86, 62, 0.3);
+}
+
+.circle-content:hover {
+    transform: scale(1.08) translateY(-8px);
+    box-shadow: 0 20px 40px rgba(40, 86, 62, 0.4);
+}
+
+/* Number counting animation enhancement */
+.impact-number {
+    transition: all 0.3s ease;
+}
+
+.impact-plus {
+    animation: pulseGlow 2s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+    0%, 100% { 
+        opacity: 1;
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    }
+    50% { 
+        opacity: 0.8;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+    }
+}
+
+/* What We Do section - parallax effect */
+.wwd-content {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.wwd-content.animate {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.wwd-images {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+}
+
+.wwd-images.animate {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Image grid - staggered hover */
+.image-grid img {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.image-grid img:hover {
+    transform: scale(1.08) rotate(2deg);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+/* Read More button - slide effect */
+.btn-read-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-read-more:hover {
+    gap: 15px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Testimonials - slide and fade */
+.testimonial-item {
+    animation: testimonialSlide 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes testimonialSlide {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Testimonial cards - 3D hover */
+.testimonial-name-card,
+.testimonial-quote-card {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.testimonial-name-card:hover {
+    transform: translateY(-5px) rotateY(5deg);
+    box-shadow: 0 10px 30px rgba(222, 176, 41, 0.4);
+}
+
+.testimonial-quote-card:hover {
+    transform: translateY(-5px) rotateY(-5deg);
+    box-shadow: 0 10px 30px rgba(40, 86, 62, 0.4);
+}
+
+/* Testimonial arrows - enhanced */
+.testimonial-arrow {
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.testimonial-arrow:hover {
+    transform: scale(1.15) rotate(360deg);
+}
+
+/* Indicators - smooth transitions */
+.indicator {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.indicator:hover {
+    transform: scale(1.5);
+    opacity: 1;
+}
+
+/* Donors marquee - pause on hover */
+.donors-track {
+    animation: marquee 30s linear infinite;
+}
+
+.donors-marquee:hover .donors-track {
+    animation-play-state: paused;
+}
+
+.donors-track img {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: grayscale(0);
+}
+
+.donors-track img:hover {
+    transform: scale(1.15);
+    filter: grayscale(0) drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
+}
+
+/* Footer - fade in on scroll */
+.footer {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.footer.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Footer columns - staggered animation */
+.footer-col {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.footer.animate .footer-col:nth-child(1) { 
+    transition-delay: 0.1s;
+    opacity: 1;
+    transform: translateY(0);
+}
+.footer.animate .footer-col:nth-child(2) { 
+    transition-delay: 0.2s;
+    opacity: 1;
+    transform: translateY(0);
+}
+.footer.animate .footer-col:nth-child(3) { 
+    transition-delay: 0.3s;
+    opacity: 1;
+    transform: translateY(0);
+}
+.footer.animate .footer-col:nth-child(4) { 
+    transition-delay: 0.4s;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Social links - slide in effect */
+.social-link {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    padding-left: 0;
+}
+
+.social-link:hover {
+    padding-left: 10px;
+    color: var(--sun-yellow);
+}
+
+.social-link svg {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.social-link:hover svg {
+    transform: rotate(360deg) scale(1.2);
+}
+
+/* Form inputs - focus effects */
+.contact-form-footer input,
+.contact-form-footer textarea {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.contact-form-footer input:focus,
+.contact-form-footer textarea:focus {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: var(--sun-yellow);
+    transform: scale(1.02);
+    box-shadow: 0 0 0 3px rgba(222, 176, 41, 0.2);
+}
+
+/* Submit button - ripple effect */
+.contact-form-footer button {
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-form-footer button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.contact-form-footer button:hover::after {
+    width: 300px;
+    height: 300px;
+}
+
+/* Map container - zoom on hover */
+.map-container {
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.map-container:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.map-container img {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.map-container:hover img {
+    transform: scale(1.1);
+}
+
+/* Section titles - fade in from bottom */
+.section-title {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section-title.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Loading state for images */
+img {
+    transition: opacity 0.4s ease;
+}
+
+img:not([src]) {
+    opacity: 0;
+}
+
+/* Smooth color transitions for all links */
+a {
+    transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ================================
+   RIPPLE EFFECT
+   ================================ */
+.ripple-effect {
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.6);
+    transform: scale(0);
+    animation: ripple 0.6s ease-out;
+    pointer-events: none;
+}
+
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* ================================
+   LOADING STATES
+   ================================ */
+body:not(.loaded) {
+    overflow: hidden;
+}
+
+.loaded .section-title {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ================================
+   HOVER GLOW EFFECTS
+   ================================ */
+.btn-donate,
+.btn-read-more,
+.btn-submit,
+.contact-form-footer button {
+    position: relative;
+}
+
+.btn-donate:hover,
+.contact-form-footer button:hover {
+    box-shadow: 0 8px 25px rgba(222, 176, 41, 0.4);
+}
+
+.btn-read-more:hover {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* ================================
+   SECTION BACKGROUNDS - SUBTLE PATTERNS
+   ================================ */
+.impact-section {
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+}
+
+.testimonials-section {
+    background-image: 
+        radial-gradient(circle at 50% 0%, rgba(40, 86, 62, 0.03) 0%, transparent 50%);
+}
+
+/* ================================
+   CUSTOM SCROLLBAR
+   ================================ */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #E5E6E4;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--deep-green);
+    border-radius: 6px;
+    border: 2px solid #E5E6E4;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--leaf-green);
+}
+
+/* For Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--deep-green) #E5E6E4;
+}
+
+/* ================================
+   MICRO-INTERACTIONS
+   ================================ */
+.impact-circle:active .circle-content {
+    transform: scale(0.95);
+}
+
+.slideshow-arrow:active {
+    transform: translateY(-50%) scale(0.9);
+}
+
+.testimonial-arrow:active {
+    transform: scale(0.9);
+}
+
+/* ================================
+   SHIMMER EFFECT FOR LOADING
+   ================================ */
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+.loading-shimmer {
+    animation: shimmer 2s infinite;
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    background-size: 1000px 100%;
+}
+
+/* ================================
+   FOCUS STYLES FOR ACCESSIBILITY
+   ================================ */
+*:focus {
+    outline: 3px solid var(--sun-yellow);
+    outline-offset: 2px;
+}
+
+button:focus,
+a:focus {
+    outline-offset: 4px;
+}
+
+/* ================================
+   GLASSMORPHISM EFFECTS
+   ================================ */
+.slideshow-arrow,
+.testimonial-arrow {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+/* ================================
+   TOOLTIP ANIMATIONS
+   ================================ */
+[data-tooltip] {
+    position: relative;
+}
+
+[data-tooltip]::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-8px);
+    padding: 8px 12px;
+    background-color: var(--deep-green);
+    color: white;
+    font-size: 12px;
+    white-space: nowrap;
+    border-radius: 4px;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-tooltip]:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-12px);
+}
+
+/* ================================
+   ENHANCED GRADIENT BACKGROUNDS
+   ================================ */
+.what-we-do {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9f7 100%);
+}
+
+.donors-section {
+    background: linear-gradient(135deg, var(--sun-yellow) 0%, #f0c040 100%);
+}
+
+/* ================================
+   SLIDE ENTRANCE ANIMATIONS
+   ================================ */
+.slide.active .slide-text {
+    animation: slideTextReveal 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideTextReveal {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -30%);
+        filter: blur(10px);
+    }
+    60% {
+        opacity: 0.8;
+        filter: blur(2px);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+        filter: blur(0);
+    }
+}
+/* ================================
+   FIXES FOR ISSUES
+   ================================ */
+
+/* FIX 1: Slideshow indicators z-index issue */
+.hero-slideshow {
+    position: relative;
+    height: 600px;
+    overflow: hidden;
+    z-index: 1; /* Ensure slideshow doesn't overlap next section */
+}
+
+.slideshow-indicators {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+    z-index: 100; /* Keep indicators above slide content but below next section */
+}
+
+/* FIX 2: Impact numbers - yellow color during animation */
+.impact-number {
+    font-size: 42px !important;
+    font-weight: 700 !important;
+    color: var(--sun-yellow) !important; /* Changed to yellow */
+    margin-bottom: 0 !important;
+    line-height: 1 !important;
+    transition: all 0.3s ease;
+}
+
+.impact-number.animated {
+    color: white !important; /* Stays white after animation completes */
+}
+
+/* FIX 3: Donors marquee - ensure animation works */
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.donors-track {
+    display: flex;
+    gap: 100px;
+    animation: marquee 25s linear infinite;
+    width: max-content;
+}
+
+.donors-marquee {
+    overflow: hidden;
+    width: 100%;
+}
+
+.donors-marquee-container {
+    overflow: hidden;
+    margin-top: 40px;
+    width: 100%;
+}
+
+/* Make sure donor images are properly sized */
+.donors-track img {
+    height: 80px;
+    width: auto;
+    object-fit: contain;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: grayscale(0);
+}
+
+/* FIX 4: Footer - more spacious layout */
+.footer {
+    background-color: var(--deep-green);
+    color: white;
+    padding: 80px 0 40px; /* Increased top padding */
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1.2fr 1.5fr 1fr 1.3fr; /* Better proportions */
+    gap: 60px; /* Increased gap */
+    margin-bottom: 50px; /* Increased bottom margin */
+    max-width: 100%; /* Use full width */
+}
+
+.footer-col {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.footer-col h3 {
+    font-size: 20px; /* Slightly larger */
+    font-weight: 600;
+    margin-bottom: 25px; /* More spacing */
+    color: white;
+}
+
+/* Social column spacing */
+.footer-social-col .social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* Increased gap */
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: white;
+    text-decoration: none;
+    font-size: 15px; /* Slightly larger */
+    transition: color 0.3s ease;
+    padding: 4px 0; /* Add vertical padding */
+}
+
+/* Contact form spacing */
+.footer-contact-col .contact-form-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 14px; /* Increased gap */
+}
+
+.contact-form-footer input,
+.contact-form-footer textarea {
+    width: 100%;
+    padding: 12px 14px; /* Increased padding */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    border-radius: 6px; /* Slightly more rounded */
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.contact-form-footer textarea {
+    min-height: 80px; /* Larger textarea */
+}
+
+.contact-form-footer button {
+    background-color: var(--sun-yellow);
+    color: var(--deep-green);
+    border: none;
+    padding: 12px 24px; /* Increased padding */
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 6px;
+}
+
+/* Opening hours spacing */
+.footer-hours-col .opening-hours p {
+    margin-bottom: 18px; /* Increased spacing */
+    font-size: 14px;
+    line-height: 1.8; /* Better line height */
+}
+
+/* Location column spacing */
+.footer-location-col .map-container {
+    margin-bottom: 20px; /* Increased margin */
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.footer-location-col .office-address {
+    margin-top: 15px;
+}
+
+.footer-location-col .office-address h4 {
+    font-size: 17px;
+    margin-bottom: 12px;
+    color: var(--sun-yellow);
+}
+
+.footer-location-col .office-address p {
+    font-size: 14px;
+    line-height: 1.8; /* Better line height */
+}
+
+/* Footer bottom spacing */
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 30px; /* Increased padding */
+    text-align: center;
+    margin-top: 20px;
+}
+
+.footer-bottom p {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+}
+
+/* Ensure container uses full width in footer */
+.footer .container {
+    max-width: 1400px; /* Wider max-width */
+    padding: 0 40px; /* More horizontal padding */
+}
+
+/* ================================
+   RESPONSIVE FIXES FOR FOOTER
+   ================================ */
+@media (max-width: 1024px) {
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+    }
+    
+    .footer .container {
+        padding: 0 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer {
+        padding: 60px 0 30px;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .footer .container {
+        padding: 0 20px;
+    }
+    
+    .footer-col h3 {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+}
+
+/* Fix for donors section */
+.donors-section .container {
+    max-width: 100%;
+    padding: 0;
+}
+
+.donors-section {
+    overflow: hidden;
+    padding: 80px 0;
+}
+
+/* Ensure impact section doesn't overlap */
+.impact-section {
+    position: relative;
+    z-index: 10;
+    background-color: var(--mint-bg);
+    padding: 80px 0;
 }
