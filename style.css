@@ -55,6 +55,11 @@ body {
     width: auto;
 }
 
+.logo a {
+    display: inline-flex;
+    align-items: center;
+}
+
 .nav {
     display: flex;
     align-items: center;
@@ -132,6 +137,32 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.slideshow-branding {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 18px;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.45);
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
+    z-index: 5;
+}
+
+.slideshow-branding img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    border-radius: 50%;
+    background: white;
+    padding: 4px;
 }
 
 .slide-text {
@@ -223,6 +254,14 @@ body {
     font-weight: 700;
     color: #DEB029;     ;
     margin-bottom: 10px;
+}
+
+.impact-stat {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 4px;
+    margin-bottom: 8px;
 }
 
 .impact-label {
@@ -1297,7 +1336,7 @@ body {
     font-size: 24px;
     font-weight: 700;
     color: white;
-    margin-bottom: 8px;
+    margin-bottom: 0;
 }
 
 /* Footer Layout Matching Figma */
