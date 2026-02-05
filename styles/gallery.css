@@ -128,6 +128,31 @@
     right: 30px;
 }
 
+.gallery-controls {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.gallery-controls button {
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: var(--deep-green);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.gallery-controls button:hover {
+    opacity: 0.9;
+}
+
+.hidden {
+    display: none;
+}
+
+
 /* ================================
    RESPONSIVE DESIGN FOR GALLERY
    ================================ */
