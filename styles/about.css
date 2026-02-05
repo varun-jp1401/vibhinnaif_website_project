@@ -1,0 +1,161 @@
+/* ================================
+   ABOUT PAGE
+   ================================ */
+.about-hero {
+    padding: 80px 0;
+    background-color: white;
+}
+
+.about-hero-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.about-hero-image img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.about-hero-content h1 {
+    font-size: 42px;
+    color: var(--deep-green);
+    margin-bottom: 25px;
+}
+
+.about-hero-content p {
+    margin-bottom: 20px;
+    line-height: 1.8;
+    color: #555;
+}
+
+.focus-areas {
+    background-color: var(--mint-bg);
+    padding: 80px 0;
+}
+
+.focus-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.focus-card {
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.focus-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.focus-icon {
+    margin-bottom: 20px;
+}
+
+.focus-card h3 {
+    color: var(--deep-green);
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.focus-card p {
+    color: #555;
+    line-height: 1.8;
+}
+
+.our-approach {
+    padding: 80px 0;
+    background-color: white;
+}
+
+.approach-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.approach-content h2 {
+    font-size: 36px;
+    color: var(--deep-green);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.approach-list {
+    list-style: none;
+}
+
+.approach-list li {
+    padding: 15px 0 15px 40px;
+    position: relative;
+    line-height: 1.8;
+    color: #555;
+}
+
+.approach-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--leaf-green);
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.about-cta {
+    background-color: var(--leaf-green);
+    padding: 80px 0;
+}
+
+.cta-content {
+    text-align: center;
+    color: white;
+}
+
+.cta-content h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.cta-content p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.btn-cta {
+    display: inline-block;
+    background-color: var(--sun-yellow);
+    color: var(--deep-green);
+    padding: 15px 40px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+.btn-cta:hover {
+    background-color: #f0c040;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* ================================
+   RESPONSIVE DESIGN FOR ABOUT
+   ================================ */
+@media (max-width: 768px) {
+    .about-hero-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    .focus-grid {
+        grid-template-columns: 1fr;
+    }
+}

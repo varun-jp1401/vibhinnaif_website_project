@@ -1,0 +1,158 @@
+/* ================================
+   HEADER
+   ================================ */
+.header {
+    background-color: var(--deep-green);
+    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 110px;
+    width: auto;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--sun-yellow);
+}
+
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: var(--sun-yellow);
+}
+
+.btn-donate {
+    background-color: var(--sun-yellow);
+    color: var(--deep-green);
+    padding: 10px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-donate:hover {
+    background-color: #f0c040;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ================================
+   HEADER SCROLL EFFECT
+   ================================ */
+.header {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header.scrolled {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    padding: 12px 0;
+}
+
+/* ================================
+   NAVIGATION LINKS - ENHANCED HOVER
+   ================================ */
+.nav-link {
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--sun-yellow);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::before {
+    width: 100%;
+}
+
+/* ================================
+   DONATE BUTTON - ENHANCED ANIMATION
+   ================================ */
+.btn-donate {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn-donate::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+    z-index: -1;
+}
+
+.btn-donate:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn-donate,
+.contact-form-footer button {
+    position: relative;
+}
+
+.btn-donate:hover,
+.contact-form-footer button:hover {
+    box-shadow: 0 8px 25px rgba(222, 176, 41, 0.4);
+}
+
+/* ================================
+   RESPONSIVE HEADER
+   ================================ */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+}

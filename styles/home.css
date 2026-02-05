@@ -1,0 +1,881 @@
+/* ================================
+   HERO SLIDESHOW
+   ================================ */
+.hero-slideshow {
+    position: relative;
+    height: 600px;
+    overflow: hidden;
+}
+
+.slideshow-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slide-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 48px;
+    font-weight: 700;
+    text-align: center;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+}
+
+.slideshow-indicators {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+    z-index: 10;
+}
+
+.slideshow-indicators .indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.slideshow-indicators .indicator.active {
+    background-color: white;
+    transform: scale(1.3);
+}
+
+/* ================================
+   SLIDESHOW ARROWS
+   ================================ */
+.slideshow-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    color: var(--deep-green);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.slideshow-arrow:hover {
+    background-color: white;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.slideshow-arrow-left {
+    left: 30px;
+}
+
+.slideshow-arrow-right {
+    right: 30px;
+}
+
+/* ================================
+   HERO SLIDESHOW - ENHANCED TRANSITIONS
+   ================================ */
+.slide {
+    animation: slideIn 1s ease-in-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: scale(1.1);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.slide-text {
+    animation: textSlideUp 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.3s both;
+}
+
+@keyframes textSlideUp {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -40%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* ================================
+   SLIDESHOW ARROWS - BOUNCE EFFECT
+   ================================ */
+.slideshow-arrow {
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.slideshow-arrow-left:hover {
+    animation: bounceLeft 0.6s ease-in-out;
+}
+
+.slideshow-arrow-right:hover {
+    animation: bounceRight 0.6s ease-in-out;
+}
+
+@keyframes bounceLeft {
+    0%, 100% { transform: translateY(-50%) translateX(0); }
+    50% { transform: translateY(-50%) translateX(-10px); }
+}
+
+@keyframes bounceRight {
+    0%, 100% { transform: translateY(-50%) translateX(0); }
+    50% { transform: translateY(-50%) translateX(10px); }
+}
+
+/* ================================
+   SLIDE ENTRANCE ANIMATIONS
+   ================================ */
+.slide.active .slide-text {
+    animation: slideTextReveal 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideTextReveal {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -30%);
+        filter: blur(10px);
+    }
+    60% {
+        opacity: 0.8;
+        filter: blur(2px);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+        filter: blur(0);
+    }
+}
+
+/* ================================
+   FIXES FOR SLIDESHOW ISSUES (FIX 1)
+   ================================ */
+.hero-slideshow {
+    position: relative;
+    height: 600px;
+    overflow: hidden;
+    z-index: 1; /* Ensure slideshow doesn't overlap next section */
+}
+
+.slideshow-indicators {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+    z-index: 100; /* Keep indicators above slide content but below next section */
+}
+
+/* ================================
+   GLASSMORPHISM EFFECTS
+   ================================ */
+.slideshow-arrow,
+.testimonial-arrow {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+/* ================================
+   MICRO-INTERACTIONS
+   ================================ */
+.slideshow-arrow:active {
+    transform: translateY(-50%) scale(0.9);
+}
+
+/* ================================
+   IMPACT SECTION
+   ================================ */
+.impact-section {
+    background-color: var(--mint-bg);
+    padding: 80px 0;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--deep-green);
+    margin-bottom: 60px;
+}
+
+.impact-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.impact-circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle-content {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: var(--deep-green);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.circle-content:hover {
+    transform: scale(1.05);
+}
+
+.impact-number {
+    font-size: 36px;
+    font-weight: 700;
+    color: #DEB029;     ;
+    margin-bottom: 10px;
+}
+
+.impact-label {
+    font-size: 14px;
+    color: white;
+    line-height: 1.4;
+}
+
+/* ================================
+   IMPACT SECTION ENHANCEMENTS
+   ================================ */
+.impact-number {
+    font-size: 42px !important;
+    font-weight: 700 !important;
+    color: white !important;
+    margin-bottom: 0 !important;
+    line-height: 1 !important;
+}
+
+.impact-plus {
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 8px;
+}
+
+/* ================================
+   IMPACT NUMBERS - YELLOW COLOR DURING ANIMATION (FIX 2)
+   ================================ */
+.impact-number {
+    font-size: 42px !important;
+    font-weight: 700 !important;
+    color: var(--sun-yellow) !important; /* Changed to yellow */
+    margin-bottom: 0 !important;
+    line-height: 1 !important;
+    transition: all 0.3s ease;
+}
+
+.impact-number.animated {
+    color: white !important; /* Stays white after animation completes */
+}
+
+/* ================================
+   IMPACT CIRCLES - STAGGERED ANIMATION ON SCROLL
+   ================================ */
+.impact-circle {
+    opacity: 0;
+    transform: translateY(50px) scale(0.9);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.impact-circle.animate {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.impact-circle:nth-child(1) { transition-delay: 0.1s; }
+.impact-circle:nth-child(2) { transition-delay: 0.2s; }
+.impact-circle:nth-child(3) { transition-delay: 0.3s; }
+.impact-circle:nth-child(4) { transition-delay: 0.4s; }
+.impact-circle:nth-child(5) { transition-delay: 0.5s; }
+.impact-circle:nth-child(6) { transition-delay: 0.6s; }
+.impact-circle:nth-child(7) { transition-delay: 0.7s; }
+.impact-circle:nth-child(8) { transition-delay: 0.8s; }
+
+/* ================================
+   CIRCLE HOVER - 3D EFFECT
+   ================================ */
+.circle-content {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 30px rgba(40, 86, 62, 0.3);
+}
+
+.circle-content:hover {
+    transform: scale(1.08) translateY(-8px);
+    box-shadow: 0 20px 40px rgba(40, 86, 62, 0.4);
+}
+
+/* ================================
+   NUMBER COUNTING ANIMATION ENHANCEMENT
+   ================================ */
+.impact-number {
+    transition: all 0.3s ease;
+}
+
+.impact-plus {
+    animation: pulseGlow 2s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+    0%, 100% { 
+        opacity: 1;
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    }
+    50% { 
+        opacity: 0.8;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+    }
+}
+
+.impact-circle:active .circle-content {
+    transform: scale(0.95);
+}
+
+/* Ensure impact section doesn't overlap */
+.impact-section {
+    position: relative;
+    z-index: 10;
+    background-color: var(--mint-bg);
+    padding: 80px 0;
+}
+
+/* ================================
+   SECTION BACKGROUNDS - SUBTLE PATTERNS
+   ================================ */
+.impact-section {
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+}
+
+/* ================================
+   WHAT WE DO SECTION
+   ================================ */
+.what-we-do {
+    padding: 80px 0;
+    background-color: white;
+}
+
+.wwd-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.wwd-content {
+    background-color: var(--leaf-green);
+    color: white;
+    padding: 50px;
+    border-radius: 10px;
+}
+
+.wwd-content h2 {
+    font-size: 36px;
+    margin-bottom: 25px;
+}
+
+.wwd-content p {
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
+.btn-read-more {
+    display: inline-block;
+    margin-top: 20px;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 18px;
+    transition: transform 0.3s ease;
+}
+
+.btn-read-more:hover {
+    transform: translateX(10px);
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.image-grid img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.image-grid img:hover {
+    transform: scale(1.05);
+}
+
+/* ================================
+   WHAT WE DO SECTION - PARALLAX EFFECT
+   ================================ */
+.wwd-content {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.wwd-content.animate {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.wwd-images {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+}
+
+.wwd-images.animate {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* ================================
+   IMAGE GRID - STAGGERED HOVER
+   ================================ */
+.image-grid img {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.image-grid img:hover {
+    transform: scale(1.08) rotate(2deg);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+/* ================================
+   READ MORE BUTTON - SLIDE EFFECT
+   ================================ */
+.btn-read-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-read-more:hover {
+    gap: 15px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-read-more:hover {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* ================================
+   ENHANCED GRADIENT BACKGROUNDS
+   ================================ */
+.what-we-do {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9f7 100%);
+}
+
+/* ================================
+   TESTIMONIALS SECTION
+   ================================ */
+.testimonials-section {
+    background-color: var(--mint-bg);
+    padding: 80px 0;
+}
+
+.testimonials-container {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.testimonials-wrapper {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+}
+
+.testimonial-item {
+    display: none;
+    grid-template-columns: 1fr 2fr;
+    gap: 30px;
+    align-items: stretch;
+}
+
+.testimonial-item.active {
+    display: grid;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.testimonial-name-card {
+    background-color: var(--sun-yellow);
+    padding: 40px 30px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.testimonial-name-card p {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #333;
+}
+
+.testimonial-quote-card {
+    background-color: var(--deep-green);
+    padding: 40px 30px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.testimonial-quote-card p {
+    color: white;
+    font-style: italic;
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+.testimonial-arrow {
+    background-color: var(--deep-green);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.testimonial-arrow:hover {
+    background-color: var(--leaf-green);
+    transform: scale(1.1);
+}
+
+.testimonial-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 40px;
+}
+
+.testimonial-indicators .indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(40, 86, 62, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.testimonial-indicators .indicator.active {
+    background-color: var(--deep-green);
+    transform: scale(1.3);
+}
+
+/* ================================
+   TESTIMONIALS - SLIDE AND FADE
+   ================================ */
+.testimonial-item {
+    animation: testimonialSlide 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes testimonialSlide {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ================================
+   TESTIMONIAL CARDS - 3D HOVER
+   ================================ */
+.testimonial-name-card,
+.testimonial-quote-card {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.testimonial-name-card:hover {
+    transform: translateY(-5px) rotateY(5deg);
+    box-shadow: 0 10px 30px rgba(222, 176, 41, 0.4);
+}
+
+.testimonial-quote-card:hover {
+    transform: translateY(-5px) rotateY(-5deg);
+    box-shadow: 0 10px 30px rgba(40, 86, 62, 0.4);
+}
+
+/* ================================
+   TESTIMONIAL ARROWS - ENHANCED
+   ================================ */
+.testimonial-arrow {
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.testimonial-arrow:hover {
+    transform: scale(1.15) rotate(360deg);
+}
+
+.testimonial-arrow:active {
+    transform: scale(0.9);
+}
+
+/* ================================
+   TESTIMONIALS SECTION BACKGROUND
+   ================================ */
+.testimonials-section {
+    background-image: 
+        radial-gradient(circle at 50% 0%, rgba(40, 86, 62, 0.03) 0%, transparent 50%);
+}
+
+/* ================================
+   INDICATORS - SMOOTH TRANSITIONS
+   ================================ */
+.indicator {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.indicator:hover {
+    transform: scale(1.5);
+    opacity: 1;
+}
+
+/* ================================
+   DONORS - FIX SPACING (NO REPEATING) 
+   ================================ */
+.donors-marquee-container { overflow: hidden; width: 100%; }
+.donors-marquee { width: 100%; overflow: hidden; }
+.donors-track {
+    display: flex;
+    gap: 90px;             /* more breathing room between logos */
+    align-items: center;
+    width: max-content;    /* natural width, don't force duplication */
+    animation: marquee 28s linear infinite;
+    will-change: transform;
+    padding-left: 16px;    /* small left inset so first logo isn't flush to edge */
+}
+.donors-track img {
+    height: 80px;
+    width: auto;
+    object-fit: contain;
+    filter: grayscale(100%);
+    transition: transform .35s ease, filter .35s ease;
+    display: inline-block;
+}
+.donors-track img:hover { transform: scale(1.12); filter: grayscale(0%); }
+
+/* marquee animation: from visible -> translate left to hide track end and jump back */
+@keyframes marquee {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(calc(-1 * (100% - 100vw))); }
+}
+
+/* Pause on hover */
+.donors-marquee:hover .donors-track { animation-play-state: paused; }
+
+/* ================================
+   DONORS MARQUEE - ENSURE ANIMATION WORKS (FIX 3)
+   ================================ */
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.donors-track {
+    display: flex;
+    gap: 100px;
+    animation: marquee 25s linear infinite;
+    width: max-content;
+}
+
+.donors-marquee {
+    overflow: hidden;
+    width: 100%;
+}
+
+.donors-marquee-container {
+    overflow: hidden;
+    margin-top: 40px;
+    width: 100%;
+}
+
+/* Make sure donor images are properly sized */
+.donors-track img {
+    height: 80px;
+    width: auto;
+    object-fit: contain;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: grayscale(0);
+}
+
+/* ================================
+   DONORS MARQUEE - PAUSE ON HOVER
+   ================================ */
+.donors-track {
+    animation: marquee 30s linear infinite;
+}
+
+.donors-marquee:hover .donors-track {
+    animation-play-state: paused;
+}
+
+.donors-track img {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: grayscale(0);
+}
+
+.donors-track img:hover {
+    transform: scale(1.15);
+    filter: grayscale(0) drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
+}
+
+/* ================================
+   DONORS SECTION
+   ================================ */
+.donors-section {
+    background: linear-gradient(135deg, var(--sun-yellow) 0%, #f0c040 100%);
+}
+
+/* Fix for donors section */
+.donors-section .container {
+    max-width: 100%;
+    padding: 0;
+}
+
+.donors-section {
+    overflow: hidden;
+    padding: 80px 0;
+}
+
+/* ================================
+   SECTION TITLES - FADE IN FROM BOTTOM
+   ================================ */
+.section-title {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section-title.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ================================
+   RESPONSIVE DESIGN FOR HOME
+   ================================ */
+@media (max-width: 1024px) {
+    .impact-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .wwd-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .impact-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+    
+    .testimonial-item {
+        grid-template-columns: 1fr;
+    }
+    
+    .testimonials-container {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 28px;
+    }
+    
+    .impact-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .circle-content {
+        width: 180px;
+        height: 180px;
+    }
+}
