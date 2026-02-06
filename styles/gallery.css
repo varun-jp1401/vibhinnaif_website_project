@@ -1,6 +1,7 @@
 /* ================================
    GALLERY PAGE
    ================================ */
+
 .gallery-header {
     background-color: var(--mint-bg);
     padding: 80px 0;
@@ -24,56 +25,119 @@
     gap: 20px;
 }
 
+/* ================================
+   GALLERY ITEM
+   ================================ */
+
 .gallery-item {
     position: relative;
     overflow: hidden;
-    border-radius: 10px;
+    border-radius: 12px;
     aspect-ratio: 1;
     cursor: pointer;
 }
 
+/* Image */
 .gallery-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease;
+    transition: transform 0.35s ease, filter 0.35s ease;
 }
+
+/* ================================
+   HOVER OVERLAY
+   ================================ */
 
 .gallery-overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(40, 86, 62, 0.8);
+    inset: 0;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: rgba(0, 0, 0, 0.25);
     opacity: 0;
-    transition: opacity 0.3s ease;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
 }
 
+/* White card inside image */
+.gallery-overlay-content {
+    position: absolute;
+    inset: 15px;
+    background-color: white;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transform: translateY(10px) scale(0.97);
+    transition: transform 0.35s ease;
+}
+
+/* Text */
+.gallery-overlay-content h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--deep-green);
+    margin-bottom: 8px;
+}
+
+.gallery-overlay-content p {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.4;
+}
+
+/* Hover effects */
 .gallery-item:hover img {
-    transform: scale(1.1);
+    transform: scale(1.04);
+    filter: brightness(0.85);
 }
 
 .gallery-item:hover .gallery-overlay {
     opacity: 1;
 }
 
-.gallery-view {
-    color: white;
-    font-size: 20px;
-    font-weight: 600;
+.gallery-item:hover .gallery-overlay-content {
+    transform: translateY(0) scale(1);
 }
+
+/* ================================
+   GALLERY CONTROLS
+   ================================ */
+
+.gallery-controls {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.gallery-controls button {
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: var(--deep-green);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.gallery-controls button:hover {
+    opacity: 0.9;
+}
+
+.hidden {
+    display: none;
+}
+
+/* ================================
+   LIGHTBOX
+   ================================ */
 
 .lightbox {
     display: none;
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     background-color: rgba(0, 0, 0, 0.9);
     z-index: 9999;
 }
@@ -128,34 +192,10 @@
     right: 30px;
 }
 
-.gallery-controls {
-    margin-top: 40px;
-    text-align: center;
-}
-
-.gallery-controls button {
-    padding: 12px 30px;
-    font-size: 16px;
-    font-weight: 600;
-    background-color: var(--deep-green);
-    color: white;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-}
-
-.gallery-controls button:hover {
-    opacity: 0.9;
-}
-
-.hidden {
-    display: none;
-}
-
-
 /* ================================
-   RESPONSIVE DESIGN FOR GALLERY
+   RESPONSIVE DESIGN
    ================================ */
+
 @media (max-width: 1024px) {
     .gallery-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -165,6 +205,11 @@
 @media (max-width: 768px) {
     .gallery-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gallery-overlay-content {
+        padding: 16px;
+        margin: 16px;
     }
 }
 
