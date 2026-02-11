@@ -7,7 +7,17 @@ const slideIndicators = document.querySelectorAll('.slideshow-indicators .indica
 
 function showSlide(index) {
     // Remove active class from all slides and indicators
-    slides.forEach(slide => slide.classList.remove('active'));
+    slides.forEach(slide => {
+        slide.classList.remove('active');
+        // Reset animation by removing and re-adding content
+        const content = slide.querySelector('.slide-content');
+        if (content) {
+            content.style.animation = 'none';
+            setTimeout(() => {
+                content.style.animation = '';
+            }, 10);
+        }
+    });
     slideIndicators.forEach(indicator => indicator.classList.remove('active'));
     
     // Add active class to current slide and indicator
@@ -105,152 +115,6 @@ testimonialIndicators.forEach((indicator, index) => {
 });
 
 // ================================
-// COUNTER ANIMATION
-// ================================
-function animateNumbers() {
-    const impactNumbers = document.querySelectorAll('.impact-number');
-    
-    const observerOptions = {
-        threshold: 0.5,
-        rootMargin: '0px'
-    };
-    
-    const animateCounter = (element) => {
-        const target = parseInt(element.getAttribute('data-target'));
-        const duration = 2000;
-        const fps = 60;
-        const totalFrames = (duration / 1000) * fps;
-        let currentFrame = 0;
-        
-        const easeOutQuart = (t) => 1 - Math.pow(1 - t, 4);
-        
-        const updateCounter = () => {
-            currentFrame++;
-            const progress = currentFrame / totalFrames;
-            const easedProgress = easeOutQuart(progress);
-            const currentValue = Math.floor(easedProgress * target);
-            
-            element.textContent = currentValue.toLocaleString();
-            
-            if (currentFrame < totalFrames) {
-                requestAnimationFrame(updateCounter);
-            } else {
-                element.textContent = target.toLocaleString();
-                element.style.transform = 'scale(1.1)';
-                setTimeout(() => {
-                    element.style.transform = 'scale(1)';
-                }, 200);
-            }
-        };
-        
-        updateCounter();
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting && !entry.target.classList.contains('counting')) {
-                entry.target.classList.add('counting');
-                setTimeout(() => {
-                    animateCounter(entry.target);
-                }, 300);
-            }
-        });
-    }, observerOptions);
-    
-    impactNumbers.forEach(number => {
-        observer.observe(number);
-    });
-}
-
-// ================================
-// ENHANCED NUMBER ANIMATION
-// ================================
-function enhancedAnimateNumbers() {
-    const impactNumbers = document.querySelectorAll('.impact-number');
-    
-    const observerOptions = {
-        threshold: 0.5,
-        rootMargin: '0px'
-    };
-    
-    const animateCounter = (element) => {
-        const target = parseInt(element.getAttribute('data-target'));
-        const duration = 2500;
-        const fps = 60;
-        const totalFrames = (duration / 1000) * fps;
-        let currentFrame = 0;
-        
-        const easeOutQuart = (t) => 1 - Math.pow(1 - t, 4);
-        
-        const updateCounter = () => {
-            currentFrame++;
-            const progress = currentFrame / totalFrames;
-            const easedProgress = easeOutQuart(progress);
-            const currentValue = Math.floor(easedProgress * target);
-            
-            element.textContent = currentValue.toLocaleString();
-            
-            if (currentFrame < totalFrames) {
-                requestAnimationFrame(updateCounter);
-            } else {
-                element.textContent = target.toLocaleString();
-                element.style.transform = 'scale(1.1)';
-                setTimeout(() => {
-                    element.style.transform = 'scale(1)';
-                }, 200);
-            }
-        };
-        
-        updateCounter();
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting && !entry.target.classList.contains('counting')) {
-                entry.target.classList.add('counting');
-                setTimeout(() => {
-                    animateCounter(entry.target);
-                }, 300);
-            }
-        });
-    }, observerOptions);
-    
-    impactNumbers.forEach(number => {
-        observer.observe(number);
-    });
-}
-
-// ================================
-// TESTIMONIALS AUTO-PLAY
-// ================================
-let testimonialAutoPlayInterval;
-
-function startTestimonialAutoPlay() {
-    testimonialAutoPlayInterval = setInterval(() => {
-        if (typeof nextTestimonial === 'function') {
-            nextTestimonial();
-        }
-    }, 8000); // Change every 8 seconds
-}
-
-function stopTestimonialAutoPlay() {
-    if (testimonialAutoPlayInterval) {
-        clearInterval(testimonialAutoPlayInterval);
-    }
-}
-
-function initTestimonialAutoPlay() {
-    const testimonialContainer = document.querySelector('.testimonials-container');
-    if (testimonialContainer) {
-        startTestimonialAutoPlay();
-        
-        // Pause on hover
-        testimonialContainer.addEventListener('mouseenter', stopTestimonialAutoPlay);
-        testimonialContainer.addEventListener('mouseleave', startTestimonialAutoPlay);
-    }
-}
-
-// ================================
 // FIX: Enhanced number animation with yellow color
 // ================================
 function fixedAnimateNumbers() {
@@ -314,11 +178,35 @@ function fixedAnimateNumbers() {
     });
 }
 
-// Replace the old animation with the fixed one
-document.addEventListener('DOMContentLoaded', () => {
-    fixedAnimateNumbers();
-    initTestimonialAutoPlay();
-});
+// ================================
+// TESTIMONIALS AUTO-PLAY
+// ================================
+let testimonialAutoPlayInterval;
+
+function startTestimonialAutoPlay() {
+    testimonialAutoPlayInterval = setInterval(() => {
+        if (typeof nextTestimonial === 'function') {
+            nextTestimonial();
+        }
+    }, 8000); // Change every 8 seconds
+}
+
+function stopTestimonialAutoPlay() {
+    if (testimonialAutoPlayInterval) {
+        clearInterval(testimonialAutoPlayInterval);
+    }
+}
+
+function initTestimonialAutoPlay() {
+    const testimonialContainer = document.querySelector('.testimonials-container');
+    if (testimonialContainer) {
+        startTestimonialAutoPlay();
+        
+        // Pause on hover
+        testimonialContainer.addEventListener('mouseenter', stopTestimonialAutoPlay);
+        testimonialContainer.addEventListener('mouseleave', startTestimonialAutoPlay);
+    }
+}
 
 // ================================
 // FIX: Donors marquee - ensure it works
@@ -334,10 +222,6 @@ function initDonorsMarquee() {
         console.log('Donors marquee initialized');
     }
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-    initDonorsMarquee();
-});
 
 // ================================
 // FIX: Slideshow z-index on scroll
@@ -358,12 +242,6 @@ function fixSlideshowZIndex() {
         });
     }
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-    fixSlideshowZIndex();
-    initImpactCirclesAnimation();
-    initWhatWeDoAnimation();
-});
 
 // ================================
 // IMPACT CIRCLES SCROLL ANIMATION
@@ -412,3 +290,15 @@ function initWhatWeDoAnimation() {
     if (wwdContent) observer.observe(wwdContent);
     if (wwdImages) observer.observe(wwdImages);
 }
+
+// ================================
+// INITIALIZE ALL FUNCTIONS ON DOM LOAD
+// ================================
+document.addEventListener('DOMContentLoaded', () => {
+    fixedAnimateNumbers();
+    initTestimonialAutoPlay();
+    initDonorsMarquee();
+    fixSlideshowZIndex();
+    initImpactCirclesAnimation();
+    initWhatWeDoAnimation();
+});
