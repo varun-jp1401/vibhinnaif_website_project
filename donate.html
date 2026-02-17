@@ -24,7 +24,7 @@
                     <a href="index.html" class="nav-link">Home</a>
                     <a href="about.html" class="nav-link">About Us</a>
                     <a href="campaigns.html" class="nav-link">Our Campaigns</a>
-                    <a href="gallery.html" class="nav-link active">Gallery</a>
+                    <a href="gallery.html" class="nav-link">Gallery</a>
                     <a href="contact.html" class="nav-link">Contact Us</a>
                     <a href="donate.html" class="btn-donate">Donate</a>
                 </nav>
@@ -58,11 +58,20 @@
                 </div>
 
                 <div class="donate-form">
+                    <select required>
+                        <option value="" disabled selected>Select a Cause</option>
+                        <option value="education">Education Support</option>
+                        <option value="healthcare">Healthcare Assistance</option>
+                        <option value="women-empowerment">Women Empowerment</option>
+                        <option value="child-welfare">Child Welfare</option>
+                        <option value="environment">Environmental Initiatives</option>
+                        <option value="general">General Donation</option>
+                    </select>
                     <input type="number" placeholder="Custom amount (₹)">
                     <input type="text" placeholder="Full name">
                     <input type="email" placeholder="Email address">
                     <input type="tel" placeholder="Phone number">
-
+                    
                     <button class="donate-submit">
                         Proceed to Donate
                     </button>
